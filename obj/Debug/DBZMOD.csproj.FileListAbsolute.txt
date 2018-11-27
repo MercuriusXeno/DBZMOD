@@ -37,3 +37,20 @@ C:\Users\Ron\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\
 C:\Users\Ron\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\ThoriumMod.dll
 C:\Users\Ron\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\Tremor.dll
 C:\Users\Ron\Documents\My Games\Terraria\ModLoader\Mod Sources\DBZMOD\bin\Debug\UnuBattleRods.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\DBZMOD.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\DBZMOD.pdb
+D:\Terraria Modding\DBZMOD\bin\Debug\ExpandedSentries.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\Laugicality.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\Microsoft.Xna.Framework.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Game.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Graphics.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\Microsoft.Xna.Framework.Xact.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\Terraria.exe
+D:\Terraria Modding\DBZMOD\bin\Debug\ThoriumMod.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\Tremor.dll
+D:\Terraria Modding\DBZMOD\bin\Debug\UnuBattleRods.dll
+D:\Terraria Modding\DBZMOD\obj\Debug\DBZMOD.csprojAssemblyReference.cache
+D:\Terraria Modding\DBZMOD\obj\Debug\DBZMOD.csproj.CoreCompileInputs.cache
+D:\Terraria Modding\DBZMOD\obj\Debug\DBZMOD.csproj.CopyComplete
+D:\Terraria Modding\DBZMOD\obj\Debug\DBZMOD.dll
+D:\Terraria Modding\DBZMOD\obj\Debug\DBZMOD.pdb
