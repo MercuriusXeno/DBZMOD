@@ -12,6 +12,7 @@ namespace DBZMOD.Projectiles
 {
     public class SpiritBombBall : KiProjectile
     {
+        public int KiChargeDrain = -2;
         public bool Released = false;
         public override void SetStaticDefaults()
         {
@@ -94,7 +95,7 @@ namespace DBZMOD.Projectiles
                         projectile.Kill();
                     }
 
-                    MyPlayer.ModPlayer(player).KiCurrent -= 2;
+                    PlayerProgressionHelper.AddKi(player, KiChargeDrain, false);
                     player.velocity = new Vector2(player.velocity.X / 3, player.velocity.Y);
 
                     //Rock effect

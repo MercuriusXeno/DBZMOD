@@ -27,10 +27,12 @@ namespace DBZMOD
         public float KiSpeedAddition;
         public int KiCrit;
         public int KiRegenTimer;
-        public int KiRegen;
-        public int KiMax = 1000;
-        public int KiCurrent;
-        public int KiRegenRate = 1;
+        public float KiMax = PlayerProgressionHelper.BASE_KI;
+        public float KiCurrent;
+        public float KiSpentInLifetime = 0;
+        public float KiCreatedInLifetime = 0;
+        public float KiRegen;
+        public float KiRegenRate = 1;
         public int OverloadMax = 100;
         public int OverloadCurrent;
         public float chargeMoveSpeed;
@@ -195,7 +197,6 @@ namespace DBZMOD
 
         #region Classes
         FlightSystem m_flightSystem = new FlightSystem();
-        ProgressionSystem m_progressionSystem = new ProgressionSystem();
         #endregion
 
 
@@ -789,16 +790,9 @@ namespace DBZMOD
             //RealismMode = tag.Get<bool>("RealismMode");
         }
 
-        public ProgressionSystem GetProgressionSystem()
-        {
-            return m_progressionSystem;
-        }
-
-
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             m_flightSystem.Update(triggersSet, player);
-            m_progressionSystem.Update(triggersSet, player);
 
             if (FlyToggle.JustPressed)
             {
@@ -1079,79 +1073,7 @@ namespace DBZMOD
         public override void ResetEffects()
         {
             KiDamage = 1f;
-            KiKbAddition = 0f;
-            if (Fragment1)
-            {
-                KiMax = 2000;
-                if (Fragment1 && playerTrait == "Legendary" && NPC.downedBoss1)
-                {
-                    KiMax = 4000;
-                }
-                if (Fragment2)
-                {
-                    KiMax = 4000;
-                    if (Fragment2 && playerTrait == "Legendary" && NPC.downedBoss1)
-                    {
-                        KiMax = 8000;
-                    }
-                    if (Fragment3)
-                    {
-                        KiMax = 6000;
-                        if (Fragment3 && playerTrait == "Legendary" && NPC.downedBoss1)
-                        {
-                            KiMax = 12000;
-                        }
-                        if (Fragment4)
-                        {
-                            KiMax = 8000;
-                            if (Fragment4 && playerTrait == "Legendary" && NPC.downedBoss1)
-                            {
-                                KiMax = 16000;
-                            }
-                            if (Fragment5)
-                            {
-                                KiMax = 10000;
-                                if (Fragment5 && playerTrait == "Legendary" && NPC.downedBoss1)
-                                {
-                                    KiMax = 20000;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                KiMax = 1000;
-            }
-            if (KiEssence1)
-            {
-                KiRegenRate = 2;
-
-                if (KiEssence2)
-                {
-                    KiRegenRate = 3;
-
-                    if (KiEssence3)
-                    {
-                        KiRegenRate = 5;
-
-                        if (KiEssence4)
-                        {
-                            KiRegenRate = 7;
-
-                            if (KiEssence5)
-                            {
-                                KiRegenRate = 10;
-                            }
-                        }
-                    }
-                }
-            }
-            if (!KiEssence1 && !KiEssence2 && !KiEssence3 && !KiEssence4 && !KiEssence5)
-            {
-                KiRegenRate = 1;
-            }
+            KiKbAddition = 0f;            
             scouterT2 = false;
             scouterT3 = false;
             scouterT4 = false;
@@ -1217,6 +1139,9 @@ namespace DBZMOD
             infuserSapphire = false;
             infuserTopaz = false;
             //IsCharging = false;
+
+            // part of the reset function is calculating ki progression from baseline.
+            PlayerProgressionHelper.ProcessKiProgression(this);
         }
 
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
@@ -1449,18 +1374,18 @@ namespace DBZMOD
 
         public override void OnHitAnything(float x, float y, Entity victim)
         {
-            if (victim != player && victim.whoAmI != NPCID.TargetDummy)
-            {
-                float expierenceToAdd = 10.0f;
-                float experienceMult = 1.0f;
+            //if (victim != player && victim.whoAmI != NPCID.TargetDummy)
+            //{
+            //    float expierenceToAdd = 10.0f;
+            //    float experienceMult = 1.0f;
 
-                if (IsTransformed)
-                {
-                    experienceMult = 2.0f;
-                }
+            //    if (IsTransformed)
+            //    {
+            //        experienceMult = 2.0f;
+            //    }
 
-                m_progressionSystem.AddKiExperience(expierenceToAdd * experienceMult);
-            }
+            //    m_progressionSystem.AddKiExperience(expierenceToAdd * experienceMult);
+            //}
 
             base.OnHitAnything(x, y, victim);
         }

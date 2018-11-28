@@ -36,7 +36,7 @@ namespace DBZMOD.Items.Misc
             Main.PlaySound(SoundID.NPCDeath7, player.position);
             //Mine makes a sound
             //modplayer resource increase goes here++
-            MyPlayer.ModPlayer(player).KiCurrent += 25;
+            PlayerProgressionHelper.AddKi(player, 25, false);
             player.statLife += 15;
             player.HealEffect(10);
             CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), new Color(51, 204, 255), 25, false, false);

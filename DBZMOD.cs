@@ -22,7 +22,6 @@ namespace DBZMOD
         private TransMenu transMenu;
         private UserInterface TransMenuInterface;
 
-        private ProgressionMenu progressionMenu;
         private ResourceBar resourceBar;
         private UserInterface ProgressionMenuInterface;
 
@@ -52,7 +51,6 @@ namespace DBZMOD
             OverloadBar.visible = false;
             instance = null;
             TransMenu.menuvisible = false;
-            ProgressionMenu.menuvisible = false;
             TransMenu.SSJ1On = false;
             TransMenu.SSJ2On = false;
             UIFlatPanel._backgroundTexture = null;
@@ -87,11 +85,6 @@ namespace DBZMOD
                 TransMenuInterface = new UserInterface();
                 TransMenuInterface.SetState(transMenu);
 
-                progressionMenu = new ProgressionMenu();
-                progressionMenu.Activate();
-                ProgressionMenuInterface = new UserInterface();
-                ProgressionMenuInterface.SetState(progressionMenu);
-
                 kibar = new KiBar();
                 kibar.Activate();
                 KiBarInterface = new UserInterface();
@@ -123,12 +116,6 @@ namespace DBZMOD
             {
                 TransMenuInterface.Update(gameTime);
             }
-
-            if(ProgressionMenuInterface != null && ProgressionMenu.menuvisible)
-            {
-                progressionMenu.Update(gameTime);
-            }
-
         }
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {
@@ -159,11 +146,6 @@ namespace DBZMOD
                         if (TransMenu.menuvisible)
                         {
                             TransMenuInterface.Draw(Main.spriteBatch, Main._drawInterfaceGameTime);
-                        }
-
-                        if(ProgressionMenu.menuvisible)
-                        {
-                            ProgressionMenuInterface.Draw(Main.spriteBatch, Main._drawInterfaceGameTime);
                         }
 
                         return true;

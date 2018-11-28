@@ -5,7 +5,6 @@ using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
-using DBZMOD;
 using Terraria;
 
 namespace DBZMOD
@@ -26,6 +25,7 @@ namespace DBZMOD
         private int KiDrainAddTimer;
         public bool RealismModeOn;
         public int MasteryTimer;
+        public TransformationStates TransformationState;
         public override void Update(Player player, ref int buffIndex)
         {
             KiDrainAdd(player);
@@ -47,7 +47,8 @@ namespace DBZMOD
                 KiDrainTimer++;
                 if(KiDrainTimer > 2)
                 {
-                    MyPlayer.ModPlayer(player).KiCurrent -= KiDrainRate + MyPlayer.ModPlayer(player).KiDrainAddition;
+                    int currentKiCost = KiDrainRate + MyPlayer.ModPlayer(player).KiDrainAddition;
+                    PlayerProgressionHelper.AddKi(player, -currentKiCost, true, false, TransformationState);
                     KiDrainTimer = 0;
                 }
                 KiDrainAddTimer++;

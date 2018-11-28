@@ -137,7 +137,8 @@ namespace DBZMOD
                 {
                     if (FLIGHT_KI_DRAIN_TIMER >= 1)
                     {
-                        MyPlayer.ModPlayer(player).KiCurrent -= totalFlightUsage + (totalFlightUsage * (int)boostSpeed);
+                        int flightKiCost = totalFlightUsage + (totalFlightUsage * (int)boostSpeed);
+                        PlayerProgressionHelper.AddKi(player, flightKiCost, true, true);
                         FLIGHT_KI_DRAIN_TIMER = 0;
                     }
                 }
@@ -145,7 +146,8 @@ namespace DBZMOD
                 {
                     if (FLIGHT_KI_DRAIN_TIMER >= 3)
                     {
-                        MyPlayer.ModPlayer(player).KiCurrent -= 1;
+                        int flightKiCost = totalFlightUsage + (totalFlightUsage * (int)boostSpeed);
+                        PlayerProgressionHelper.AddKi(player, flightKiCost, true, true, TransformationStates.Untransformed);
                         FLIGHT_KI_DRAIN_TIMER = 0;
                     }
                 }

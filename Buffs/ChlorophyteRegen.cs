@@ -21,6 +21,7 @@ namespace DBZMOD.Buffs
             RegenTimer++;
             if(RegenTimer > 10)
             {
+                PlayerProgressionHelper.AddKi(player, 1, false, false, TransformationStates.Untransformed);
                 MyPlayer.ModPlayer(player).KiCurrent += 1;
                 RegenTimer = 0;
             }
